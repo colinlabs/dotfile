@@ -1,0 +1,66 @@
+" Let Vim and NeoVim shares the same plugin directory.
+" Comment it out if you don't like
+let g:spacevim_plug_home = '~/.vim/plugged'
+
+" Enable the existing layers in space-vim
+let g:spacevim_layers = [
+      \ 'airline', 'code-snippets', 'editing', 'auto-completion', 'programming', 'text-align',
+      \ 'ctrlp', 'file-manager', 'spacevim', 'docker', 'python'
+      \ ]
+
+" Add your own plugins
+function! UserInit()
+
+  " let g:spacevim_leader = "<\Space>"
+  let g:spacevim_localleader = ','
+
+  " Install personal plugins
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'szw/vim-smartclose'
+  Plug 'vim-scripts/togglenumber'
+
+endfunction
+
+" Override the default settings as well as adding extras
+function! UserConfig()
+
+  " If you have installed the powerline fonts and want to enable airline layer
+  let g:airline_powerline_fonts=1
+  color space-vim-dark
+
+  " Use gui colors in terminal if available
+  if has('termguicolors')
+    set termguicolors
+    if g:spacevim_tmux
+      " If use vim inside tmux, see https://github.com/vim/vim/issues/993
+      " set Vim-specific sequences for RGB colors
+      let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+      let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    endif
+  endif
+  """ customize config
+  "" .bashrc or .zshrc add "stty -ixon"
+  nnoremap <C-s> :w<CR>
+  inoremap <C-s> <Esc>:w<CR>l
+  vnoremap <C-s> <Esc>:w<CR>
+  "" keymaps
+  noremap <silent><leader>tn :call ToggleNumber()<CR>
+  nnoremap <Leader>fR :source %<CR>
+
+  inoremap <C-P> <Up>
+  inoremap <C-N> <Down>
+  cnoremap <C-A> <Home>
+  cnoremap <C-E> <End>
+
+  "" set
+  set vb t_vb=
+  set mouse-=a
+  set autoread
+  set autowriteall
+  set wrap
+
+  "" smartclose
+  let g:smartclose_default_mapping_key = '<C-g>'
+
+  let g:UltiSnipsExpandTrigger="<tab>"
+endfunction

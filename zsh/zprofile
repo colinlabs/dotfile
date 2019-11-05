@@ -1,0 +1,2 @@
+export PATH=/usr/local/bin:$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
+alias k=kubectl

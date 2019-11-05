@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: header comment with sharp
+# key: author
+# --
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+##
+##   @DESCRIPTION : ${1:<description>}
+##   @NAME        : `(current-buffer)`
+##   @VERSION     : ${2:<version>}
+##   @CREATE      : `(format-time-string "%F %T")`
+##   @UPDATE      : `(format-time-string "%F %T")`
+##   @MAINTAINER  : ${3:<maintainer>}
+##
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+
+$0

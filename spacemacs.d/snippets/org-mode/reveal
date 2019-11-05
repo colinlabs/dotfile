@@ -1,0 +1,28 @@
+# -*- mode: snippet -*-
+# name: header for org-reveal
+# key: reveal
+# --
+
+#+TITLE:  ${1:Title of slidedeck}
+#+AUTHOR: ${2:`user-full-name`}
+#+EMAIL:  ${3:email address}
+
+#+REVEAL_ROOT: http://cdn.bootcss.com/reveal.js/3.3.0/
+#+REVEAL_MARGIN: 0.1
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_HLEVEL: 2
+#+REVEAL_THEME: ${4:beige|black|blood|league|moon|night|serif|simple|sky|solarized|white}
+#+REVEAL_TRANS: ${5:cube|none|fade|concave|convex|page|slide|zoom}
+#+REVEAL_DEFAULT_FRAG_STYLE: ${6:appear|grow|shrink|roll-in|highlight-red|highlight-green|highlight-blue}
+#+REVEAL_PLUGINS: (markdown)
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:t reveal_control:t
+#+OPTIONS: reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil
+#+OPTIONS: reveal_width:1200 reveal_height:1000
+#+OPTIONS: toc:2
+#+OPTIONS: reveal_title_slide:auto
+#+OPTIONS: reveal_slide_number:h.v
+#+OPTIONS: reveal_data_state:blackout
+#+OPTIONS: reveal_single_file:nil
+
+$0

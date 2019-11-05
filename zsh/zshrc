@@ -1,0 +1,89 @@
+###############################################################################
+#                               Packages Manger                               #
+###############################################################################
+# prezto
+setopt EXTENDED_GLOB
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+    source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+source ~/.zplug/init.zsh
+
+ZPLUG_CACHE_DIR=~/.cache/zplug
+
+# Load plugins
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+
+zplug "modules/environment", from:prezto
+zplug "modules/prompt", from:prezto
+zplug "modules/editor", from:prezto
+zplug "modules/history", from:prezto
+zplug "modules/directory", from:prezto
+zplug "modules/spectrum", from:prezto
+zplug "modules/utility", from:prezto
+zplug "modules/completion", from:prezto
+zplug "modules/git", from:prezto
+zplug "modules/docker", from:prezto
+zplug "modules/python", from:prezto
+zplug "modules/osx", from:prezto
+zplug "modules/syntax-highlighting", from:prezto, defer:2
+zplug "modules/autosuggestions", from:prezto, defer:2
+zplug "plugins/autojump", from:oh-my-zsh
+zplug "plugins/docker", from:oh-my-zsh
+zplug "plugins/docker-compose", from:oh-my-zsh
+# zplug "denysdovhan/spaceship-prompt", as:theme
+zplug load
+
+###############################################################################
+#                                User Settings                                #
+###############################################################################
+export LANG=en_US.UTF-8
+export EDITOR='vim'
+export CLICOLOR=1
+export LSCOLORS=Fxbxaxdxcxegedabagacad
+
+if [ "$TERM" = "xterm" ]; then
+  export TERM=xterm-256color
+fi
+
+###############################################################################
+#                                   Environments                              #
+###############################################################################
+
+# Golang
+export GOPROXY=https://mirrors.aliyun.com/goproxy,https://goproxy.io,https://goproxy.cn
+
+# Homebrew
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
+export HOMEBREW_NO_AUTO_UPDATE=1
+
+
+###############################################################################
+#                              Addtional Settings                             #
+###############################################################################
+
+# enable ctrl-s
+stty -ixon
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+###############################################################################
+#                                  Keybinding                                 #
+###############################################################################
+bindkey '' vi-forward-word
+bindkey '' vi-end-of-line
+
+###############################################################################
+#                                Alias Settings                               #
+###############################################################################
+
+## quick file
+alias -s gz='tar -xzvf'
+alias -s tgz='tar -xzvf'
+alias -s zip='unzip'
+alias -s bz2='tar -xjvf'
+alias -s cat='bat'
+
+###############################################################################
+#                                Plugin Settings                              #
+###############################################################################
