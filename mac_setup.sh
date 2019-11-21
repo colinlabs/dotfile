@@ -8,3 +8,7 @@ defaults -currentHost write -globalDomain AppleFontSmoothing -int 3
 # password lenght
 pwpolicy -clearaccountpolicies
 
+# Application Language 
+defaults write com.apple.Maps AppleLanguages '(zh-CN)'
+defaults write com.apple.iCal AppleLanguages '(zh-CN)'
+

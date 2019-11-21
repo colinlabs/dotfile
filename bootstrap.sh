@@ -15,7 +15,7 @@ pkgs(){
     ## Upgrade any already-installed formulae.
     brew upgrade
 
-    brew tap caskroom/fonts
+    brew tap homebrew/cask-fonts
     ## Install command-line tools using Homebrew.
     # brew install emacs-mac --HEAD --with-official-icon --with-ctags  --with-gnutls
     brew install vim zsh
