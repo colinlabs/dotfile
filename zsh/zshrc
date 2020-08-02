@@ -19,7 +19,7 @@ zplug "modules/prompt", from:prezto
 zplug "modules/editor", from:prezto
 zplug "modules/history", from:prezto
 zplug "modules/directory", from:prezto
-zplug "modules/spectrum", from:prezto
+zplug "modules/spectrum", from:prezto 
 zplug "modules/utility", from:prezto
 zplug "modules/completion", from:prezto
 zplug "modules/git", from:prezto
@@ -51,7 +51,7 @@ fi
 ###############################################################################
 
 # Golang
-export GOPROXY=https://goproxy.cn
+export GOPROXY=https://goproxy.cn,direct
 
 # Homebrew
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles

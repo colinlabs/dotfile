@@ -1,0 +1,33 @@
+""" Map leader to space ---------------------
+let mapleader=" "
+
+""" Plugins  -------------------------------
+
+""" Plugin settings -------------------------
+
+""" Common settings -------------------------
+set relativenumber
+set showmode
+set showcmd
+set ignorecase
+set iskeyword
+set incsearch
+
+""" Mappings --------------------------------
+vnoremap <BS> d
+inoremap jj <Esc>
+
+map <leader>r :action Run<CR>
+map <leader>d :action Debug<CR>
+map <leader>c :action Stop<CR>
+map <leader>z :action ToggleDistractionFreeMode<CR>
+
+map <leader>h :action Vcs.ShowTabbedFileHistory<CR>
+map <S-Space> :action GotoNextError<CR>
+
+map <leader>b :action ToggleLineBreakpoint<CR>
+
+""" Idea specific settings ------------------
+set ideajoin
+set ideastatusicon=enabled
+set idearefactormode=keep

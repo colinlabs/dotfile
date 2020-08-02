@@ -12,3 +12,5 @@ pwpolicy -clearaccountpolicies
 defaults write com.apple.Maps AppleLanguages '(zh-CN)'
 defaults write com.apple.iCal AppleLanguages '(zh-CN)'
 
+# Show Pathbar
+defaults write com.apple.finder ShowPathbar -bool true
