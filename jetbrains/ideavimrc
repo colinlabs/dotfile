@@ -12,10 +12,15 @@ set showcmd
 set ignorecase
 set iskeyword
 set incsearch
+set hlsearch
+set ignorecase smartcase
+set visualbell
 
 """ Mappings --------------------------------
-vnoremap <BS> d
+"vnoremap <BS> d
 inoremap jj <Esc>
+" refresh
+noremap \r <ESC>:source ~/.ideavimrc<CR>
 
 map <leader>r :action Run<CR>
 map <leader>d :action Debug<CR>
@@ -28,6 +33,3 @@ map <S-Space> :action GotoNextError<CR>
 map <leader>b :action ToggleLineBreakpoint<CR>
 
 """ Idea specific settings ------------------
-set ideajoin
-set ideastatusicon=enabled
-set idearefactormode=keep
