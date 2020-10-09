@@ -15,13 +15,27 @@ pkgs(){
     ## Upgrade any already-installed formulae.
     brew upgrade
 
-    brew tap homebrew/cask-fonts
     ## Install command-line tools using Homebrew.
     # brew install emacs-mac --HEAD --with-official-icon --with-ctags  --with-gnutls
+
+    # Essential tools
     brew install vim zsh
-    brew install findutils moreutils coreutils gnu-sed the_silver_searcher 
+    # tools
+    brew install findutils moreutils coreutils gnu-sed the_silver_searcher gnu-tar
     brew install tmux tree autojump htop iftop fzf wget iproute2mac
-    brew install figlet httpie bat
+
+    # ascii graph
+    brew install figlet 
+    # like curl
+    brew install httpie
+    # like cat
+    brew install bat
+    # like man
+    brew install tldr 
+    # like ls
+    brew install exa
+    # font
+    brew install font-fira-code
     ## Remove outdated versions from the cellar.
     brew cleanup
 

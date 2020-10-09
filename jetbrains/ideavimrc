@@ -7,6 +7,7 @@ let mapleader=" "
 
 """ Common settings -------------------------
 set relativenumber
+set number
 set showmode
 set showcmd
 set ignorecase
@@ -15,10 +16,11 @@ set incsearch
 set hlsearch
 set ignorecase smartcase
 set visualbell
+set selectmode=mouse
 
 """ Mappings --------------------------------
-"vnoremap <BS> d
 inoremap jj <Esc>
+
 " refresh
 noremap \r <ESC>:source ~/.ideavimrc<CR>
 
@@ -33,3 +35,5 @@ map <S-Space> :action GotoNextError<CR>
 map <leader>b :action ToggleLineBreakpoint<CR>
 
 """ Idea specific settings ------------------
+set ideajoin
+set ideastatusicon=enabled

@@ -14,3 +14,6 @@ defaults write com.apple.iCal AppleLanguages '(zh-CN)'
 
 # Show Pathbar
 defaults write com.apple.finder ShowPathbar -bool true
+
+# Jetbrains
+# defaults write com.jetbrains.goland CGFontRenderingFontSmoothingDisabled -bool YES
