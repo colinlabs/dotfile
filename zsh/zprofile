@@ -1,2 +1,3 @@
-export PATH=/usr/local/bin:$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
-alias k=kubectl
+#
+# Executes commands at login pre-zshrc.
+#

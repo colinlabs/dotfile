@@ -55,9 +55,9 @@ apps() {
         yinxiangbiji \
         virtualbox \
         eudic
-}
 
 tools(){
+    zsh_completion_dir="/usr/local/share/zsh/site-functions"
     ## prezto
     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
     ## zplug
@@ -66,7 +66,11 @@ tools(){
     curl -sLf https://spacevim.org/install.sh | bash
     ## spacemacs
     # git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-
+    ## gem source
+    gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
+    ## colorls
+    gem install colorls --user-install
+    cp $HOME/.gem/ruby/*/gems/colorls*/zsh/_colorls $zsh_completion_dir/
 }
 
 links(){
@@ -78,14 +82,12 @@ links(){
 
     ln -sf $BASEDIR/zsh/zshrc ~/.zshrc
     ln -sf $BASEDIR/zsh/zlogin ~/.zlogin
-    ln -sf $BASEDIR/zsh/zpreztorc ~/.zpreztorc
     cp $BASEDIR/zsh/zprofile ~/.zprofile
 
 }
 
 
 install(){
-
     pkgs
     tools
     links
