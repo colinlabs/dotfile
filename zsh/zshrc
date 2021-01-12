@@ -48,6 +48,7 @@ zplug "modules/git", from:prezto
 zplug "modules/docker", from:prezto
 zplug "modules/ssh", from:prezto
 zplug "plugins/autojump", from:oh-my-zsh
+zplug "plugins/docker", from:oh-my-zsh
 
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 
@@ -70,14 +71,14 @@ fi
 ###############################################################################
 
 ### Homebrew
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 ###############################################################################
 #                              Addtional Settings                             #
 ###############################################################################
 
-# enable ctrl-s
+## enable ctrl-s
 stty -ixon
 
 ###############################################################################

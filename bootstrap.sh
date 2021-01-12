@@ -1,7 +1,7 @@
 # install brew packages
-BASEDIR=$(cd `dirname $0`; pwd)
+BASEDIR=$(cd $(dirname $0);pwd)
 
-pkgs(){
+pkgs() {
     ## homebrew
     export HOMEBREW_NO_AUTO_UPDATE=1
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -25,13 +25,13 @@ pkgs(){
     brew install tmux tree autojump htop iftop fzf wget iproute2mac
 
     # ascii graph
-    brew install figlet 
+    brew install figlet
     # like curl
     brew install httpie
     # like cat
     brew install bat
     # like man
-    brew install tldr 
+    brew install tldr
     # like ls
     brew install exa
     # font
@@ -42,26 +42,24 @@ pkgs(){
 }
 
 apps() {
-
     brew cask install \
         font-fira-code \
         iterm2 \
         visual-studio-code \
         qq wechat \
-        shadowsocksx-ng \
         wpsoffice \
         neteasemusic \
         dingtalk \
         yinxiangbiji \
-        virtualbox \
-        eudic
+        virtualbox
+}
 
-tools(){
+tools() {
     zsh_completion_dir="/usr/local/share/zsh/site-functions"
     ## prezto
     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
     ## zplug
-    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
+    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
     ## SpaceVim
     curl -sLf https://spacevim.org/install.sh | bash
     ## spacemacs
@@ -73,8 +71,7 @@ tools(){
     cp $HOME/.gem/ruby/*/gems/colorls*/zsh/_colorls $zsh_completion_dir/
 }
 
-links(){
-    
+links() {
     # ln -sf $BASEDIR/spacemacs.d/ ~/.spacemacs.d
     cp $BASEDIR/gitconfig ~/.gitconfig
     mkdir ~/.pip && cp $BASEDIR/python/pip.conf ~/.pip/
@@ -83,11 +80,9 @@ links(){
     ln -sf $BASEDIR/zsh/zshrc ~/.zshrc
     ln -sf $BASEDIR/zsh/zlogin ~/.zlogin
     cp $BASEDIR/zsh/zprofile ~/.zprofile
-
 }
 
-
-install(){
+install() {
     pkgs
     tools
     links
