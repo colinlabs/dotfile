@@ -1,4 +1,12 @@
 # install brew packages
+###
+ # @Author: your name
+ # @Date: 2021-01-12 23:08:58
+ # @LastEditTime: 2021-01-14 10:18:23
+ # @LastEditors: Colin.Lee
+ # @Description: In User Settings Edit
+ # @FilePath: /.dotfile/bootstrap.sh
+### 
 BASEDIR=$(cd $(dirname $0);pwd)
 
 pkgs() {
@@ -14,6 +22,9 @@ pkgs() {
 
     ## Upgrade any already-installed formulae.
     brew upgrade
+
+    ## Brew tap
+    brew tap homebrew/cask-fonts
 
     ## Install command-line tools using Homebrew.
     # brew install emacs-mac --HEAD --with-official-icon --with-ctags  --with-gnutls
@@ -42,8 +53,7 @@ pkgs() {
 }
 
 apps() {
-    brew cask install \
-        font-fira-code \
+    brew install --cask \
         iterm2 \
         visual-studio-code \
         qq wechat \
@@ -51,7 +61,9 @@ apps() {
         neteasemusic \
         dingtalk \
         yinxiangbiji \
-        virtualbox
+        virtualbox \
+        typora \
+        bob 
 }
 
 tools() {
@@ -80,6 +92,12 @@ links() {
     ln -sf $BASEDIR/zsh/zshrc ~/.zshrc
     ln -sf $BASEDIR/zsh/zlogin ~/.zlogin
     cp $BASEDIR/zsh/zprofile ~/.zprofile
+
+    ln -sf ~/.dotfile/zsh/p10k.zsh ~/.p10k.zsh
+}
+
+after() {
+    echo "$(brew --prefix)/opt/fzf/install"
 }
 
 install() {

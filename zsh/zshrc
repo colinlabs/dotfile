@@ -97,7 +97,7 @@ alias tgz='tar -xzvf'
 alias zip='unzip'
 alias bz2='tar -xjvf'
 alias cat='bat'
-alias ls='colorls'
+alias ls='colorls -A --sd --sf'
 
 ###############################################################################
 #                                Plugin Settings                              #
@@ -107,5 +107,6 @@ alias ls='colorls'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ### To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 (( ! ${+functions[p10k]} )) || p10k finalize
