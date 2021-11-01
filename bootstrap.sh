@@ -2,16 +2,17 @@
 ###
  # @Author: your name
  # @Date: 2021-01-12 23:08:58
- # @LastEditTime: 2021-01-14 10:18:23
+ # @LastEditTime: 2021-09-18 17:05:15
  # @LastEditors: Colin.Lee
  # @Description: In User Settings Edit
  # @FilePath: /.dotfile/bootstrap.sh
 ### 
 BASEDIR=$(cd $(dirname $0);pwd)
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 pkgs() {
     ## homebrew
-    export HOMEBREW_NO_AUTO_UPDATE=1
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     cd "$(brew --repo)"
     git remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git
@@ -33,7 +34,7 @@ pkgs() {
     brew install vim zsh
     # tools
     brew install findutils moreutils coreutils gnu-sed the_silver_searcher gnu-tar
-    brew install tmux tree autojump htop iftop fzf wget iproute2mac
+    brew install tmux tree autojump htop iftop fzf wget iproute2mac lrzsz wget
 
     # ascii graph
     brew install figlet
@@ -43,10 +44,8 @@ pkgs() {
     brew install bat
     # like man
     brew install tldr
-    # like ls
-    brew install exa
     # font
-    brew install font-fira-code
+    brew install font-fira-code font-hack-nerd-font
     ## Remove outdated versions from the cellar.
     brew cleanup
 
@@ -63,7 +62,9 @@ apps() {
         yinxiangbiji \
         virtualbox \
         typora \
-        bob 
+        eudic \
+        bob \
+        spark 
 }
 
 tools() {
@@ -78,7 +79,7 @@ tools() {
     # git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
     ## gem source
     gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
-    ## colorls
+    ## colorls, like ls
     gem install colorls --user-install
     cp $HOME/.gem/ruby/*/gems/colorls*/zsh/_colorls $zsh_completion_dir/
 }

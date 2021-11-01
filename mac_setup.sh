@@ -15,5 +15,8 @@ defaults write com.apple.iCal AppleLanguages '(zh-CN)'
 # Show Pathbar
 defaults write com.apple.finder ShowPathbar -bool true
 
+# Disable .DS_STORE
+defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+
 # Jetbrains
 # defaults write com.jetbrains.goland CGFontRenderingFontSmoothingDisabled -bool YES
