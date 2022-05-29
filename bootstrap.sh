@@ -2,7 +2,7 @@
 ###
  # @Author: your name
  # @Date: 2021-01-12 23:08:58
- # @LastEditTime: 2021-09-18 17:05:15
+ # @LastEditTime: 2022-05-29 22:01:36
  # @LastEditors: Colin.Lee
  # @Description: In User Settings Edit
  # @FilePath: /.dotfile/bootstrap.sh
@@ -32,9 +32,10 @@ pkgs() {
 
     # Essential tools
     brew install vim zsh
+
     # tools
-    brew install findutils moreutils coreutils gnu-sed the_silver_searcher gnu-tar
-    brew install tmux tree autojump htop iftop fzf wget iproute2mac lrzsz wget
+    brew install findutils moreutils coreutils gnu-sed the_silver_searcher gnu-tar trash
+    brew install tmux tree autojump htop iftop fzf wget iproute2mac lrzsz
 
     # ascii graph
     brew install figlet
@@ -44,6 +45,8 @@ pkgs() {
     brew install bat
     # like man
     brew install tldr
+    # like df
+    brew install duf
     # font
     brew install font-fira-code font-hack-nerd-font
     ## Remove outdated versions from the cellar.
@@ -62,9 +65,10 @@ apps() {
         yinxiangbiji \
         virtualbox \
         typora \
-        eudic \
         bob \
         spark 
+        # terminal auto completion
+        fig
 }
 
 tools() {

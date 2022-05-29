@@ -1,6 +1,11 @@
+# Fig pre block. Keep at the top of this file.
+. "$HOME/.fig/shell/zshrc.pre.zsh"
 ###############################################################################
 #                               Packages Manger                               #
 ###############################################################################
+
+### Bash Completion
+autoload bashcompinit && bashcompinit
 
 ### prezto
 # Color output (auto set to 'no' on dumb terminals).
@@ -100,6 +105,17 @@ alias bz2='tar -xjvf'
 alias cat='bat'
 alias ls='colorls -A --sd --sf'
 
+alias rm="trash"
+alias sed='gsed'
+
+###############################################################################
+#                                Functions Settings                           #
+###############################################################################
+export nodarkmode(){id=`osascript -e "id of app \"$1\""`;defaults write $id NSRequiresAquaSystemAppearance -bool Yes }
+export darkmode(){=`osascript -e "id of app \"$1\""`;defaults write $id NSRequiresAquaSystemAppearance -bool No }
+
+# osascript -e 'id of app "MotionPro"'
+# defaults write com.apple.Maps NSRequiresAquaSystemAppearance -bool Yes
 ###############################################################################
 #                                Plugin Settings                              #
 ###############################################################################
@@ -112,3 +128,8 @@ POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 (( ! ${+functions[p10k]} )) || p10k finalize
 
+
+[ `which aws_completer` ] && complete -C '/usr/local/bin/aws_completer' aws
+
+# Fig post block. Keep at the bottom of this file.
+. "$HOME/.fig/shell/zshrc.post.zsh"
