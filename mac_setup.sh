@@ -20,3 +20,6 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 
 # Jetbrains
 # defaults write com.jetbrains.goland CGFontRenderingFontSmoothingDisabled -bool YES
+
+# Enable TouchID for sudo
+echo "auth    sufficient    pam_tid.so" | sudo tee -a /etc/pam.d/sudo

@@ -2,7 +2,7 @@
 ###
  # @Author: your name
  # @Date: 2021-01-12 23:08:58
- # @LastEditTime: 2022-05-29 22:01:36
+ # @LastEditTime: 2022-06-19 18:21:45
  # @LastEditors: Colin.Lee
  # @Description: In User Settings Edit
  # @FilePath: /.dotfile/bootstrap.sh
