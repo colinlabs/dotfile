@@ -25,19 +25,23 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
 
 # Set syntax highlighting styles.
 zstyle ':prezto:module:syntax-highlighting' styles \
-  'builtin' 'bg=blue' \
-  'command' 'bg=blue' \
-  'function' 'bg=blue'
+  'builtin' 'bg=blue,bold' \
+  'command' 'bg=blue,bold' \
+  'function' 'bg=blue,bold'
 
 # Set syntax pattern styles.
 zstyle ':prezto:module:syntax-highlighting' pattern \
   'rm*-rf*' 'fg=white,bold,bg=red'
 
 ### zplug
-source ~/.zplug/init.zsh
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
 
 ## Load plugins
 ZPLUG_CACHE_DIR=~/.cache/zplug
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug "modules/editor", from:prezto
@@ -81,6 +85,8 @@ export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bott
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 
+export FIG_WORKFLOWS_KEYBIND="^\\"
+
 ###############################################################################
 #                              Addtional Settings                             #
 ###############################################################################
@@ -91,8 +97,7 @@ stty -ixon
 ###############################################################################
 #                                  Keybinding                                 #
 ###############################################################################
-bindkey '' vi-forward-word
-# bindkey '' vi-end-of-line
+bindkey '' emacs-forward-word # ctrl+f
 
 ###############################################################################
 #                                Alias Settings                               #
@@ -128,9 +133,6 @@ export darkmode(){=`osascript -e "id of app \"$1\""`;defaults write $id NSRequir
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 (( ! ${+functions[p10k]} )) || p10k finalize
-
-
-[ `which aws_completer` ] && complete -C '/usr/local/bin/aws_completer' aws
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"

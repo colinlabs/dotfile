@@ -2,7 +2,7 @@
 ###
  # @Author: your name
  # @Date: 2021-01-12 23:08:58
- # @LastEditTime: 2022-06-19 18:21:45
+ # @LastEditTime: 2022-08-10 11:31:45
  # @LastEditors: Colin.Lee
  # @Description: In User Settings Edit
  # @FilePath: /.dotfile/bootstrap.sh
@@ -49,6 +49,8 @@ pkgs() {
     brew install duf
     # font
     brew install font-fira-code font-hack-nerd-font
+    # zplug
+    brew install zplug
     ## Remove outdated versions from the cellar.
     brew cleanup
 
@@ -57,16 +59,6 @@ pkgs() {
 apps() {
     brew install --cask \
         iterm2 \
-        visual-studio-code \
-        qq wechat \
-        wpsoffice \
-        neteasemusic \
-        dingtalk \
-        yinxiangbiji \
-        virtualbox \
-        typora \
-        bob \
-        spark 
         # terminal auto completion
         fig
 }
@@ -75,8 +67,6 @@ tools() {
     zsh_completion_dir="/usr/local/share/zsh/site-functions"
     ## prezto
     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-    ## zplug
-    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
     ## SpaceVim
     curl -sLf https://spacevim.org/install.sh | bash
     ## spacemacs
