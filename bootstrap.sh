@@ -1,23 +1,23 @@
-# install brew packages
-###
- # @Author: your name
- # @Date: 2021-01-12 23:08:58
- # @LastEditTime: 2022-08-10 11:31:45
- # @LastEditors: Colin.Lee
- # @Description: In User Settings Edit
- # @FilePath: /.dotfile/bootstrap.sh
-### 
+#!/usr/bin/env bash
+set -xe
+
 BASEDIR=$(cd $(dirname $0);pwd)
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 export HOMEBREW_NO_AUTO_UPDATE=1
 
+# install brew packages
 pkgs() {
     ## homebrew
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
+
     cd "$(brew --repo)"
     git remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git
     cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
     git remote set-url origin https://mirrors.aliyun.com/homebrew/homebrew-core.git
+
+    ## Load brew command
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+
     ## Make sure we’re using the latest Homebrew.
     brew update
 
@@ -30,8 +30,12 @@ pkgs() {
     ## Install command-line tools using Homebrew.
     # brew install emacs-mac --HEAD --with-official-icon --with-ctags  --with-gnutls
 
+    # Disable build-in command
+    brew reinstall zsh ruby
+    sudo chsh -s /opt/homebrew/bin/zsh $(whoami)
+
     # Essential tools
-    brew install vim zsh
+    brew reinstall vim
 
     # tools
     brew install findutils moreutils coreutils gnu-sed the_silver_searcher gnu-tar trash
@@ -59,22 +63,29 @@ pkgs() {
 apps() {
     brew install --cask \
         iterm2 \
+        alfred \
+        bartender \
+
+        wechat \
         # terminal auto completion
         fig
 }
 
 tools() {
-    zsh_completion_dir="/usr/local/share/zsh/site-functions"
+    zsh_completion_dir="/opt/homebrew/share/zsh/site-functions"
+
     ## prezto
     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+
     ## SpaceVim
     curl -sLf https://spacevim.org/install.sh | bash
+
     ## spacemacs
     # git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-    ## gem source
-    gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
+
     ## colorls, like ls
-    gem install colorls --user-install
+    PATH=/opt/homebrew/opt/ruby/bin:$PATH
+    gem install colorls
     cp $HOME/.gem/ruby/*/gems/colorls*/zsh/_colorls $zsh_completion_dir/
 }
 
@@ -92,7 +103,7 @@ links() {
 }
 
 after() {
-    echo "$(brew --prefix)/opt/fzf/install"
+    yes | $(brew --prefix)/opt/fzf/install
 }
 
 install() {

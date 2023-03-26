@@ -1,5 +1,12 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 ###############################################################################
 #                               Packages Manger                               #
 ###############################################################################
@@ -40,7 +47,7 @@ fi
 
 ## Load plugins
 ZPLUG_CACHE_DIR=~/.cache/zplug
-export ZPLUG_HOME=/usr/local/opt/zplug
+export ZPLUG_HOME=/opt/homebrew/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
@@ -80,19 +87,27 @@ fi
 ###############################################################################
 
 ### Homebrew
+eval $(/opt/homebrew/bin/brew shellenv)
+
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
 # export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 
+### Ruby
+export PATH=/opt/homebrew/opt/ruby/bin:$PATH
+export PATH=$(gem env home)/bin:$PATH
+
+### Fig
 export FIG_WORKFLOWS_KEYBIND="^\\"
+
 
 ###############################################################################
 #                              Addtional Settings                             #
 ###############################################################################
 
 ## enable ctrl-s
-stty -ixon
+# stty -ixon
 
 ###############################################################################
 #                                  Keybinding                                 #
@@ -130,9 +145,13 @@ export darkmode(){=`osascript -e "id of app \"$1\""`;defaults write $id NSRequir
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ### To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+# POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-(( ! ${+functions[p10k]} )) || p10k finalize
+# (( ! ${+functions[p10k]} )) || p10k finalize
 
 # Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+
+# Go Version Manager
+
+[[ -f "$HOME/.gvm/scripts/gvm" ]] && source $HOME/.gvm/scripts/gvm
