@@ -25,7 +25,7 @@ inoremap jj <Esc>
 noremap \r <ESC>:source ~/.ideavimrc<CR>
 
 map <leader>r :action Run<CR>
-map <leader>d :action Debug<CR>
+map <leader>d :action Debug<CR\
 map <leader>c :action Stop<CR>
 map <leader>z :action ToggleDistractionFreeMode<CR>
 

@@ -2,7 +2,8 @@
 set -xe
 
 BASEDIR=$(cd $(dirname $0);pwd)
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
+export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 # install brew packages
@@ -55,6 +56,10 @@ pkgs() {
     brew install font-fira-code font-hack-nerd-font
     # zplug
     brew install zplug
+    # starship promt
+    brew install starship
+    # exa like ls
+    brew install exa nnn
     ## Remove outdated versions from the cellar.
     brew cleanup
 
@@ -99,7 +104,8 @@ links() {
     ln -sf $BASEDIR/zsh/zlogin ~/.zlogin
     cp $BASEDIR/zsh/zprofile ~/.zprofile
 
-    ln -sf ~/.dotfile/zsh/p10k.zsh ~/.p10k.zsh
+    ln -sf $BASEDIR/zsh/p10k.zsh ~/.p10k.zsh
+    ln -sf $BASEDIR/jetbrans/ideavimrc ~/.ideavimrc
 }
 
 after() {
