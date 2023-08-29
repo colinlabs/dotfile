@@ -66,7 +66,7 @@ zplug "modules/ssh", from:prezto
 zplug "plugins/autojump", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh
 
-# zplug "romkatv/powerlevel10k", as:theme, depth:1
+zplug "romkatv/powerlevel10k", as:theme, depth:1
 
 zplug load
 
@@ -134,7 +134,7 @@ export darkmode(){id=`osascript -e "id of app \"$1\""`;defaults write $id NSRequ
 ###############################################################################
 
 ### starship
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
 # precmd_functions+=(set_win_title)
 
 ### colorls
