@@ -113,6 +113,8 @@ bindkey '' emacs-forward-word # ctrl+f
 #                                Alias Settings                               #
 ###############################################################################
 
+unalias lt
+
 ### quick file
 alias gz='tar -xzvf'
 alias tgz='tar -xzvf'
@@ -150,7 +152,7 @@ alias nls='nnn -de'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ### Rancher Desktop
-export PATH="$HOME/.rd/bin:$PATH"
+# export PATH=$PATH:$HOME/.rd/bin
 
 ### Fig
 export FIG_WORKFLOWS_KEYBIND="^\\"

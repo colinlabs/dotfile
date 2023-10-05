@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -xe
 
 BASEDIR=$(cd $(dirname $0);pwd)
 export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
@@ -9,12 +8,12 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 # install brew packages
 pkgs() {
     ## homebrew
-    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
+    # curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 
-    cd "$(brew --repo)"
-    git remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git
-    cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
-    git remote set-url origin https://mirrors.aliyun.com/homebrew/homebrew-core.git
+    # cd "$(brew --repo)"
+    # git remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git
+    # cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+    # git remote set-url origin https://mirrors.aliyun.com/homebrew/homebrew-core.git
 
     ## Load brew command
     eval "$(/opt/homebrew/bin/brew shellenv)"
