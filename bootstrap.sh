@@ -59,6 +59,10 @@ pkgs() {
     brew install starship
     # exa like ls
     brew install exa nnn
+    # tssh like ssh
+    brew install trzsz-ssh
+    # kubecolor
+    brew install kubecolor
     ## Remove outdated versions from the cellar.
     brew cleanup
 
@@ -69,8 +73,6 @@ apps() {
         iterm2 \
         alfred \
         bartender \
-
-        wechat \
         # terminal auto completion
         fig
 }
