@@ -1,5 +1,6 @@
 # Q pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -11,64 +12,19 @@ fi
 #                               Packages Manger                               #
 ###############################################################################
 
-### Bash Completion
-autoload bashcompinit && bashcompinit
+### Zimfw
+ZIM_CONFIG_FILE=~/.config/zimrc
+ZIM_HOME=~/.zim
 
-### prezto
-# Color output (auto set to 'no' on dumb terminals).
-zstyle ':prezto:*:*' color 'yes'
-# Set color
-zstyle ':prezto:module:autosuggestions' color 'yes'
-# Set the query found color.
-zstyle ':prezto:module:autosuggestions:color' found 'fg=8'
-# Set the SSH identities to load into the agent.
-zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_github'
-# Set the key mapping style to 'emacs' or 'vi'.
-zstyle ':prezto:module:editor' key-bindings 'emacs'
-# Set syntax highlighters.
-# By default, only the main highlighter is enabled.
-zstyle ':prezto:module:syntax-highlighting' highlighters \
-  'main' 'brackets' 'pattern' 'line' 'cursor' 'root'
-
-# Set syntax highlighting styles.
-zstyle ':prezto:module:syntax-highlighting' styles \
-  'builtin' 'bg=blue,bold' \
-  'command' 'bg=blue,bold' \
-  'function' 'bg=blue,bold'
-
-# Set syntax pattern styles.
-zstyle ':prezto:module:syntax-highlighting' pattern \
-  'rm*-rf*' 'fg=white,bold,bg=red'
-
-### zplug
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+# Install missing modules and update ${ZIM_HOME}/init.zsh if missing or outdated.
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc} ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init -q
 fi
 
-## Load plugins
-ZPLUG_CACHE_DIR=~/.cache/zplug
-export ZPLUG_HOME=/opt/homebrew/opt/zplug
-source $ZPLUG_HOME/init.zsh
+source ${ZIM_HOME}/init.zsh
 
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-zplug "modules/editor", from:prezto
-zplug "modules/history", from:prezto
-zplug "modules/directory", from:prezto
-zplug "modules/spectrum", from:prezto 
-zplug "modules/utility", from:prezto
-zplug "modules/completion", from:prezto
-zplug "modules/osx", from:prezto
-zplug "modules/syntax-highlighting", from:prezto, defer:2
-zplug "modules/autosuggestions", from:prezto, defer:2
-zplug "modules/git", from:prezto
-zplug "modules/docker", from:prezto
-zplug "modules/ssh", from:prezto
-zplug "plugins/autojump", from:oh-my-zsh
-zplug "plugins/docker", from:oh-my-zsh
-
-zplug "romkatv/powerlevel10k", as:theme, depth:1
-
-zplug load
+### Bash Completion
+autoload bashcompinit && bashcompinit
 
 ###############################################################################
 #                                User Settings                                #
@@ -85,6 +41,7 @@ fi
 ###############################################################################
 #                                   Environments                              #
 ###############################################################################
+export ZSH_CACHE_DIR=$HOME/.cache/zsh
 
 ### Homebrew
 eval $(/opt/homebrew/bin/brew shellenv)
@@ -94,8 +51,14 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 
 ### Ruby
-export PATH=/opt/homebrew/opt/ruby/bin:$PATH
+export PATH=$PATH:/opt/homebrew/opt/ruby/bin
 export PATH=$(gem env home)/bin:$PATH
+
+### Toolbox App
+export PATH="$PATH:/Users/colin/Library/Application Support/JetBrains/Toolbox/scripts"
+
+### Terraform
+export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 
 ###############################################################################
 #                              Addtional Settings                             #
@@ -113,7 +76,7 @@ bindkey '' emacs-forward-word # ctrl+f
 #                                Alias Settings                               #
 ###############################################################################
 
-unalias lt
+# unalias lt
 
 ### quick file
 alias gz='tar -xzvf'
@@ -121,13 +84,15 @@ alias tgz='tar -xzvf'
 alias zip='unzip'
 alias bz2='tar -xjvf'
 alias cat='bat'
+alias sa='alias | grep -i'
 
 alias rm="trash"
 alias sed='gsed'
 
-alias k=kubecolor
+alias nls="nnn -de"
 
-# alias ssh="command ssh"
+alias k=kubecolor
+alias kt=kubetail
 
 ###############################################################################
 #                                Functions Settings                           #
@@ -143,30 +108,21 @@ export darkmode(){id=`osascript -e "id of app \"$1\""`;defaults write $id NSRequ
 # eval "$(starship init zsh)"
 # precmd_functions+=(set_win_title)
 
+### POWERLEVEL10K
+POWERLEVEL10K_DISABLE_CONFIGURATION_WIZARD=true
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 ### colorls
 alias ls='colorls -A --sd --sf'
 
 ### nnn
 alias nls='nnn -de'
 
-### exa
-# alias ls='exa'
-
 ### fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-### Rancher Desktop
-# export PATH=$PATH:$HOME/.rd/bin
-
-### Fig
-export FIG_WORKFLOWS_KEYBIND="^\\"
-
-### To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# Go Version Manager
-[[ -f "$HOME/.gvm/scripts/gvm" ]] && source $HOME/.gvm/scripts/gvm
+### Go Version Manager
+command -v goenv >/dev/null 2>&1 && eval "$(goenv init -)"
 
 # Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"

@@ -23,3 +23,6 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 
 # Enable TouchID for sudo
 echo "auth    sufficient    pam_tid.so" | sudo tee -a /etc/pam.d/sudo
+
+# Reduce dock autohide delay
+defaults write com.apple.dock autohide-delay -int 0

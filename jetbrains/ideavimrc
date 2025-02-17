@@ -20,7 +20,7 @@ set selectmode=mouse
 
 """ Mappings --------------------------------
 inoremap jj <Esc>
-
+vnoremap <BS> x<BS>
 " refresh
 noremap \r <ESC>:source ~/.ideavimrc<CR>
 
@@ -35,5 +35,5 @@ map <S-Space> :action GotoNextError<CR>
 map <leader>b :action ToggleLineBreakpoint<CR>
 
 """ Idea specific settings ------------------
-"set ideajoin
+set ideajoin
 set ideastatusicon=enabled

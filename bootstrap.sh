@@ -73,8 +73,6 @@ apps() {
         iterm2 \
         alfred \
         bartender \
-        # terminal auto completion
-        fig
 }
 
 tools() {
@@ -86,8 +84,15 @@ tools() {
     ## SpaceVim
     curl -sLf https://spacevim.org/install.sh | bash
 
+    # Download zimfw plugin manager if missing.
+    ZIM_HOME=~/.zim
+    if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+    curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+    fi
+
     ## spacemacs
-    # git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+    # git clone https://github.com/syl20bnr/spacemacs $HOME/emacs.d
 
     ## colorls, like ls
     PATH=/opt/homebrew/opt/ruby/bin:$PATH
@@ -96,17 +101,18 @@ tools() {
 }
 
 links() {
-    # ln -sf $BASEDIR/spacemacs.d/ ~/.spacemacs.d
-    cp $BASEDIR/gitconfig ~/.gitconfig
-    mkdir ~/.pip && cp $BASEDIR/python/pip.conf ~/.pip/
-    ln -sf $BASEDIR/SpaceVim.d ~/.SpaceVim.d
+    # ln -sf $BASEDIR/spacemacs.d/ $HOME/spacemacs.d
 
-    ln -sf $BASEDIR/zsh/zshrc ~/.zshrc
-    ln -sf $BASEDIR/zsh/zlogin ~/.zlogin
-    cp $BASEDIR/zsh/zprofile ~/.zprofile
+    [ ! -f "$HOME/.gitconfig" ] && cp $BASEDIR/gitconfig $HOME/.gitconfig
+    ln -sf $BASEDIR/SpaceVim.d $HOME/.SpaceVim.d
+    ln -sf $BASEDIR/zsh/zshrc $HOME/.zshrc
+    ln -sf $BASEDIR/zsh/zlogin $HOME/.zlogin
 
-    ln -sf $BASEDIR/zsh/p10k.zsh ~/.p10k.zsh
-    ln -sf $BASEDIR/jetbrans/ideavimrc ~/.ideavimrc
+    cp $BASEDIR/zsh/zprofile $HOME/.zprofile
+
+    ln -sf $BASEDIR/zsh/p10k.zsh $HOME/.p10k.zsh
+    ln -sf $BASEDIR/jetbrans/ideavimrc $HOME/.ideavimrc
+    ln -sf $BASEDIR/config/zimrc $HOME/.config/zimrc
 }
 
 after() {
