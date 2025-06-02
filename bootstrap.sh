@@ -73,8 +73,7 @@ pkgs() {
 apps() {
     brew install --cask \
         iterm2 \
-        alfred \
-        bartender \
+        alfred 
 }
 
 tools() {
