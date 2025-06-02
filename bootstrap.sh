@@ -8,7 +8,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 # install brew packages
 pkgs() {
     ## homebrew
-    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
+    # curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 
     # cd "$(brew --repo)"
     # git remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git
