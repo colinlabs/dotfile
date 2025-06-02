@@ -10,23 +10,24 @@
 # Sets sane Zsh built-in environment options.
 zmodule environment
 # Provides handy git aliases and functions.
-# zmodule git
+zmodule git
 # Applies correct bindkeys for input events.
 zmodule input
 # Sets a custom terminal title.
-# zmodule termtitle
+zmodule termtitle
 # Utility aliases and functions. Adds colour to ls, grep and less.
 zmodule utility
+
 
 #
 # Prompt
 #
 
-# Exposes to prompts how long the last command took to execute, used by asciiship.
+## Exposes to prompts how long the last command took to execute, used by asciiship.
 # zmodule duration-info
-# Exposes git repository status information to prompts, used by asciiship.
+## Exposes git repository status information to prompts, used by asciiship.
 # zmodule git-info
-# A heavily reduced, ASCII-only version of the Spaceship and Starship prompts.
+## A heavily reduced, ASCII-only version of the Spaceship and Starship prompts.
 # zmodule asciiship
 
 #
@@ -43,12 +44,16 @@ zmodule completion
 # Modules that must be initialized last
 #
 
+zmodule romkatv/powerlevel10k --use degit
 zmodule zsh-users/zsh-syntax-highlighting
 zmodule zsh-users/zsh-history-substring-search
 zmodule zsh-users/zsh-autosuggestions
-zmodule romkatv/powerlevel10k --use degit
+zmodule zsh-users/zsh-autosuggestions
 zmodule ohmyzsh/ohmyzsh --root plugins/autojump
 zmodule ohmyzsh/ohmyzsh --root plugins/nvm
-zmodule ohmyzsh/ohmyzsh --root plugins/pyenv
-zmodule sorin-ionescu/prezto --root modules/docker
-# zmodule sorin-ionescu/prezto --root modules/git
+# zmodule ohmyzsh/ohmyzsh --root plugins/pyenv
+zmodule akarzim/zsh-docker-aliases
+
+#
+# Custom plugin settings
+#

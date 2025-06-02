@@ -12,6 +12,8 @@ fi
 #                               Packages Manger                               #
 ###############################################################################
 
+zstyle ':zim:git' aliases-prefix 'g'
+
 ### Zimfw
 ZIM_CONFIG_FILE=~/.config/zimrc
 ZIM_HOME=~/.zim
@@ -66,6 +68,7 @@ export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 
 # enable ctrl-c
 # stty -ixon
+
 
 ###############################################################################
 #                                  Keybinding                                 #

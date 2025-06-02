@@ -63,6 +63,8 @@ pkgs() {
     brew install trzsz-ssh
     # kubecolor
     brew install kubecolor
+    # amazon-q
+    brew install amazon-q
     ## Remove outdated versions from the cellar.
     brew cleanup
 
