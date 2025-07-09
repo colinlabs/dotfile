@@ -15,7 +15,7 @@ set iskeyword
 set incsearch
 set hlsearch
 set ignorecase smartcase
-set vb t_vb=
+"set vb t_vb=
 set selectmode=mouse
 
 """ Mappings --------------------------------

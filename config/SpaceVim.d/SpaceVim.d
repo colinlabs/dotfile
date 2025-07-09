@@ -1,0 +1,1 @@
+/Users/colin/.dotfile/config/SpaceVim.d

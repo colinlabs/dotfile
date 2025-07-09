@@ -48,7 +48,6 @@ zmodule romkatv/powerlevel10k --use degit
 zmodule zsh-users/zsh-syntax-highlighting
 zmodule zsh-users/zsh-history-substring-search
 zmodule zsh-users/zsh-autosuggestions
-zmodule zsh-users/zsh-autosuggestions
 zmodule ohmyzsh/ohmyzsh --root plugins/autojump
 zmodule ohmyzsh/ohmyzsh --root plugins/nvm
 # zmodule ohmyzsh/ohmyzsh --root plugins/pyenv

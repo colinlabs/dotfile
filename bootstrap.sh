@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -x
 
 BASEDIR=$(cd $(dirname $0);pwd)
 export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
@@ -71,8 +72,41 @@ pkgs() {
 }
 
 apps() {
-    brew install --cask \
+    # must-have
+    brew install -f \
+        wechat \
+        qq \
+        arc \
+        tabby \
+        notion \
+        iina \
+        jordanbaird-ice \
         iterm2 \
+        goenv
+
+    # office
+    brew install -f \
+        slack \
+        zoom \
+        tencent-meeting \
+        utm \
+        windows-app \
+        spark \
+        apifox \
+        orbstack \
+        goland \
+        jetbrains-toolbox \
+        trae \
+        switchhosts \
+        pearcleaner \
+        cherry-studio
+
+    # purchase
+    brew install -f \
+        1password \
+        bob \
+        istat-menus \
+        popclip \
         alfred 
 }
 
@@ -83,7 +117,7 @@ tools() {
     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
     ## SpaceVim
-    curl -sLf https://spacevim.org/install.sh | bash
+    # curl -sLf https://spacevim.org/install.sh | bash
 
     # Download zimfw plugin manager if missing.
     ZIM_HOME=~/.zim
@@ -104,16 +138,17 @@ tools() {
 links() {
     # ln -sf $BASEDIR/spacemacs.d/ $HOME/spacemacs.d
 
-    [ ! -f "$HOME/.gitconfig" ] && cp $BASEDIR/gitconfig $HOME/.gitconfig
-    ln -sf $BASEDIR/SpaceVim.d $HOME/.SpaceVim.d
-    ln -sf $BASEDIR/zsh/zshrc $HOME/.zshrc
-    ln -sf $BASEDIR/zsh/zlogin $HOME/.zlogin
+    [ ! -f "$HOME/.gitconfig" ] && cp $BASEDIR/config/gitconfig $HOME/.gitconfig
+    ln -sf $BASEDIR/config/SpaceVim.d $HOME/.SpaceVim.d
+    ln -sf $BASEDIR/config/zsh/zshrc $HOME/.zshrc
+    ln -sf $BASEDIR/config/zsh/zlogin $HOME/.zlogin
 
-    cp $BASEDIR/zsh/zprofile $HOME/.zprofile
+    cp $BASEDIR/config/zsh/zprofile $HOME/.zprofile
 
-    ln -sf $BASEDIR/zsh/p10k.zsh $HOME/.p10k.zsh
-    ln -sf $BASEDIR/jetbrans/ideavimrc $HOME/.ideavimrc
+    ln -sf $BASEDIR/config/zsh/p10k.zsh $HOME/.p10k.zsh
+    ln -sf $BASEDIR/config/jetbrains/ideavimrc $HOME/.ideavimrc
     ln -sf $BASEDIR/config/zimrc $HOME/.config/zimrc
+
 }
 
 after() {

@@ -116,7 +116,7 @@ POWERLEVEL10K_DISABLE_CONFIGURATION_WIZARD=true
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 ### colorls
-alias ls='colorls -A --sd --sf'
+# alias ls='colorls -A --sd --sf'
 
 ### nnn
 alias nls='nnn -de'

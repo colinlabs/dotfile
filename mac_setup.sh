@@ -26,3 +26,9 @@ echo "auth    sufficient    pam_tid.so" | sudo tee -a /etc/pam.d/sudo
 
 # Reduce dock autohide delay
 defaults write com.apple.dock autohide-delay -int 0
+
+# Show suggested and recent apps in Dock
+defaults write com.apple.dock show-recents -bool false
+
+# Goland VIM
+# defaults write -g ApplePressAndHoldEnabled 0
